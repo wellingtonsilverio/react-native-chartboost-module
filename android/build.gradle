@@ -72,8 +72,8 @@ repositories {
 
 dependencies {
     //noinspection GradleDynamicVersion
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.facebook.react:react-native:+'  // From node_modules
-    compile fileTree(dir: "libs", include: ["*.jar"])
 }
 
 def configureReactNativePom(def pom) {
