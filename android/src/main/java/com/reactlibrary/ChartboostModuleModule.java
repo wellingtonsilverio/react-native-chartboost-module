@@ -32,6 +32,8 @@ public class ChartboostModuleModule extends ReactContextBaseJavaModule {
 
         setupSdkWithCustomSettings();
 
+        addToUILog("initialize");
+
         callback.invoke("Sucess");
     }
 
@@ -50,6 +52,8 @@ public class ChartboostModuleModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void rewarded(String location, Callback callback) {
         Chartboost.showRewardedVideo(location);
+
+        addToUILog("rewarded");
 
         callback.invoke("Sucess");
     }
@@ -193,9 +197,9 @@ public class ChartboostModuleModule extends ReactContextBaseJavaModule {
         public void didInitialize() {
             addToUILog("Chartboost SDK is initialized and ready!");
         }
-
-        public void addToUILog(final String message) {
-            System.out.println(message);
-        }
     };
+
+    public void addToUILog(final String message) {
+        System.out.println(message);
+    }
 }
