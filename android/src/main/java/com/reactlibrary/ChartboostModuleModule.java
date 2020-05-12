@@ -31,6 +31,8 @@ public class ChartboostModuleModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void initialize(String appId, String appSignature, Callback callback) {
+        Chartboost.setDelegate(delegate);
+
         Chartboost.startWithAppId(getCurrentActivity(), appId, appSignature);
 
         setupSdkWithCustomSettings();
@@ -49,6 +51,15 @@ public class ChartboostModuleModule extends ReactContextBaseJavaModule {
                 sharedPreferences.getBoolean("interstitialInFirstSession", true));
         Chartboost.setAutoCacheAds(sharedPreferences.getBoolean("enableAutoCache", true));
 
+    }
+
+    @ReactMethod
+    public void isRewardedReadyToDisplay(String location, Callback callback) {
+        boolean isReady = Chartboost.hasRewardedVideo(location);
+
+        addToUILog("isReady: "+isReady);
+
+        callback.invoke("isReady: "+isReady);
     }
 
     @ReactMethod
