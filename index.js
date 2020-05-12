@@ -16,7 +16,14 @@ const addEventListener = (event, handler) => {
   _subscriptions.set(handler, listener);
 
   return {
-    remove: () => removeEventListener(event, handler),
+    remove: () => {
+      try {
+        return removeEventListener(event, handler);
+      } catch (error) {
+        console.log("Error in removeEventListener: " + event, error);
+        return;
+      }
+    },
   };
 };
 
