@@ -24,7 +24,7 @@ public class ChartboostModuleModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void logApp(String appId, String appSignature, Callback callback) {
         // TODO: Implement some actually useful functionality
-        Chartboost.startWithAppId(getApplicationContext(), appId, appSignature);
+        Chartboost.startWithAppId(getCurrentActivity(), appId, appSignature);
         callback.invoke("Sucess");
     }
 }
