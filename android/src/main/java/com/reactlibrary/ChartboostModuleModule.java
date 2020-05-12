@@ -11,6 +11,9 @@ import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.Callback;
 
 import com.chartboost.sdk.Chartboost;
+import com.facebook.react.modules.core.DeviceEventManagerModule;
+import com.facebook.react.bridge.WritableMap;
+import com.facebook.react.bridge.Arguments;
 
 public class ChartboostModuleModule extends ReactContextBaseJavaModule {
 
@@ -201,5 +204,10 @@ public class ChartboostModuleModule extends ReactContextBaseJavaModule {
 
     public void addToUILog(final String message) {
         System.out.println(message);
+        WritableMap map = Arguments.createMap();
+
+        map.putString("message", message);
+
+        reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit("log", map);
     }
 }
