@@ -11,6 +11,7 @@ import com.facebook.react.uimanager.ViewManager;
 import com.facebook.react.bridge.JavaScriptModule;
 
 import com.chartboost.sdk.Chartboost;
+import android.app.Activity;
 
 public class ChartboostModulePackage implements ReactPackage {
     @Override
