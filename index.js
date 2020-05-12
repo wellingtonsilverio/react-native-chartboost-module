@@ -18,22 +18,23 @@ const addEventListener = (event, handler) => {
   return {
     remove: () => {
       try {
-        return removeEventListener(event, handler);
+        const listener = _subscriptions.get(handler);
+
+        if (!listener) {
+          return;
+        }
+
+        listener.remove();
+
+        _subscriptions.delete(handler);
+
+        return;
       } catch (error) {
         console.log("Error in removeEventListener: " + event, error);
         return;
       }
     },
   };
-};
-
-const removeEventListener = (type, handler) => {
-  const listener = _subscriptions.get(handler);
-  if (!listener) {
-    return;
-  }
-  listener.remove();
-  _subscriptions.delete(handler);
 };
 
 export default {
