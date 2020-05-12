@@ -19,7 +19,6 @@ public class ChartboostModulePackage implements ReactPackage {
         return Arrays.<NativeModule>asList(new ChartboostModuleModule(reactContext));
     }
 
-    @Override
     public List<Class<? extends JavaScriptModule>> createJSModules() {
         return Collections.emptyList();
     }
