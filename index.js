@@ -2,7 +2,7 @@ import { NativeModules, NativeEventEmitter } from "react-native";
 
 const { ChartboostModule } = NativeModules;
 
-const eventEmitter = new NativeEventEmitter(RNAdMobRewarded);
+const eventEmitter = new NativeEventEmitter(ChartboostModule);
 
 const _subscriptions = new Map();
 
