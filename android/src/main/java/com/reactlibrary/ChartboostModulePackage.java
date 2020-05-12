@@ -20,11 +20,17 @@ public class ChartboostModulePackage implements ReactPackage {
     }
 
     @Override
+    public List<Class<? extends JavaScriptModule>> createJSModules() {
+        return Collections.emptyList();
+    }
+
+    @Override
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
         return Collections.emptyList();
     }
 
     public static void ONCREATE(Activity activity, String appId, String appSignature) {
+        Chartboost.startWithAppId(activity, appId, appSignature);
         Chartboost.onCreate(activity);
     }
 

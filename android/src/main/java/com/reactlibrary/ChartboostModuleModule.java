@@ -30,7 +30,7 @@ public class ChartboostModuleModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void initialize(String appId, String appSignature, Callback callback) {
+    public void initialize(String appId, String appSignature) {
         Chartboost.setDelegate(delegate);
 
         Chartboost.startWithAppId(getCurrentActivity(), appId, appSignature);
@@ -38,8 +38,6 @@ public class ChartboostModuleModule extends ReactContextBaseJavaModule {
         setupSdkWithCustomSettings();
 
         addToUILog("initialize");
-
-        callback.invoke("Sucess");
     }
 
     private void setupSdkWithCustomSettings() {
@@ -59,7 +57,7 @@ public class ChartboostModuleModule extends ReactContextBaseJavaModule {
 
         addToUILog("isReady: "+isReady);
 
-        callback.invoke("isReady: "+isReady);
+        callback.invoke(isReady);
     }
 
     @ReactMethod
@@ -196,7 +194,6 @@ public class ChartboostModuleModule extends ReactContextBaseJavaModule {
     };
 
     public void addToUILog(final String message) {
-        System.out.println(message);
         WritableMap map = Arguments.createMap();
 
         map.putString("message", message);
