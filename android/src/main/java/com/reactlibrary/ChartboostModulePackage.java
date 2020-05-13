@@ -29,29 +29,29 @@ public class ChartboostModulePackage implements ReactPackage {
     }
 
     public static void ONCREATE(Activity activity, String appId, String appSignature) {
-        Chartboost.startWithAppId(activity, appId, appSignature);
-        Chartboost.onCreate(activity);
+        Chartboost.startWithAppId(activity.getApplicationContext(), appId, appSignature);
+        // Chartboost.onCreate(activity);
     }
 
     public static void ONSTART(Activity activity) {
-        Chartboost.onStart(activity);
+//        Chartboost.onStart(activity);
     }
 
-    public static void ONRESUME(Activity activity) {
-        Chartboost.onResume(activity);
-    }
+     public static void ONRESUME(Activity activity) {
+//     Chartboost.onResume(activity);
+     }
 
-    public static void ONPAUSE(Activity activity) {
-        Chartboost.onPause(activity);
-    }
+     public static void ONPAUSE(Activity activity) {
+//     Chartboost.onPause(activity);
+     }
 
-    public static void ONSTOP(Activity activity) {
-        Chartboost.onStop(activity);
-    }
+     public static void ONSTOP(Activity activity) {
+//     Chartboost.onStop(activity);
+     }
 
-    public static void ONDESTROY(Activity activity) {
-        Chartboost.onDestroy(activity);
-    }
+     public static void ONDESTROY(Activity activity) {
+//     Chartboost.onDestroy(activity);
+     }
 
     public static boolean ONBACKPRESSED() {
         return Chartboost.onBackPressed();

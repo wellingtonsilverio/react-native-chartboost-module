@@ -40,7 +40,7 @@ public class ChartboostModuleModule extends ReactContextBaseJavaModule {
     public void initialize(String appId, String appSignature) {
         Chartboost.setDelegate(delegate);
 
-        Chartboost.startWithAppId(getCurrentActivity(), appId, appSignature);
+        Chartboost.startWithAppId(reactContext, appId, appSignature);
 
         setupSdkWithCustomSettings();
 
@@ -71,7 +71,16 @@ public class ChartboostModuleModule extends ReactContextBaseJavaModule {
     public void rewarded(String location, Callback callback) {
         Chartboost.showRewardedVideo(location);
 
-        addToUILog("rewarded");
+        addToUILog("Show rewarded");
+
+        callback.invoke("Sucess");
+    }
+
+    @ReactMethod
+    public void rewardedCache(String location, Callback callback) {
+        Chartboost.cacheRewardedVideo(location);
+
+        addToUILog("Cache rewarded");
 
         callback.invoke("Sucess");
     }

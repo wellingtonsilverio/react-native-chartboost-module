@@ -59,6 +59,9 @@ repositories {
     // ref: https://www.baeldung.com/maven-local-repository
     mavenLocal()
     maven {
+        url "https://chartboostmobile.bintray.com/Chartboost"
+    }
+    maven {
         // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
         url "$rootDir/../node_modules/react-native/android"
     }
@@ -71,10 +74,10 @@ repositories {
 }
 
 dependencies {
-    //noinspection GradleDynamicVersion
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.facebook.react:react-native:+'  // From node_modules
+    implementation 'com.chartboost:chartboost-sdk:8.0.2'
 }
+
 
 def configureReactNativePom(def pom) {
     def packageJson = new groovy.json.JsonSlurper().parseText(file('../package.json').text)
